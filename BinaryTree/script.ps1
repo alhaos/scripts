@@ -10,7 +10,7 @@ class binaryTreeNode {
     [int]$rightChildId
     [string]$tag
 
-    binaryTreeNode ($id) {
+    binaryTreeNode ($id, $level) {
         $this.id = $id
     }
     
@@ -21,7 +21,7 @@ class binaryTree {
     [int]$sequenceNextNodeId = 0
 
     binaryTree() { # констуктор
-        $this.nodes +=, [binaryTreeNode]::New($this.sequenceNextNodeId)
+        $this.nodes +=, [binaryTreeNode]::New($this.sequenceNextNodeId, 0)
         $this.sequenceNextNodeId++
     }
 

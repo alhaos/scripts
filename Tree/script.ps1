@@ -7,11 +7,13 @@ class TreeNode {
 
     [int]$ID
     [System.Nullable[int]]$ParentNodeId
+    [int]$level
     [string]$Tag
 
-    TreeNode ($id, $parentNodeId) {
+    TreeNode ($id, $parentNodeId, $level) {
         $this.ID = $id
-        $this.parentNodeId = $parentNodeId
+        $this.ParentNodeId = $parentNodeId
+        $this.level = $level
     }
  }
 
@@ -20,12 +22,12 @@ class TreeNode {
     hidden [int]$SequenceNextNodeId = 0
 
     BinaryTree() {
-        $this.Nodes +=, [TreeNode]::New($this.SequenceNextNodeId, $null)
+        $this.Nodes +=, [TreeNode]::New($this.SequenceNextNodeId, $null, 0)
         $this.SequenceNextNodeId++
     }
 
     InsertNode($parentNodeId) {
-        $node = [TreeNode]::New($this.SequenceNextNodeId, $parentNodeId)
+        $node = [TreeNode]::New($this.SequenceNextNodeId, $parentNodeId, $level)
         $this.Nodes +=, $node
         $this.SequenceNextNodeId++
     }
@@ -33,8 +35,4 @@ class TreeNode {
 
 $myBinaryTree = [binaryTree]::New()
 $myBinaryTree.InsertNode(0)
-$myBinaryTree.InsertNode(1)
-$myBinaryTree.InsertNode(0)
-
-
 $myBinaryTree.Nodes
