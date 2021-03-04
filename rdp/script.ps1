@@ -10,7 +10,7 @@ $lastInerationIndex = $settings.Root.LastInerationIndex
 $settings.Root.LastInerationIndex = (Get-EventLog -LogName Security | Select-Object -First 1).Index.ToString()
 
 Get-EventLog -LogName Security -InstanceId 5157 -ErrorAction SilentlyContinue | Where-Object{$_.Index -gt $lastInerationIndex} | ForEach-Object{
-    $_.Message
+   ([regex]"Адрес источника:\s*(.*)\s").Matches($_.Message).Groups[1].Value
 }
 
 $settings.Save($settingsFileName)
