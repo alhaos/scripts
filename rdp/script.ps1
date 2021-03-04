@@ -9,7 +9,7 @@ param(
 $lastInerationIndex = $settings.Root.LastInerationIndex
 $settings.Root.LastInerationIndex = (Get-EventLog -LogName Security | Select-Object -First 1).Index.ToString()
 
-Get-EventLog -LogName Security -ErrorAction -InstanceId 5157 SilentlyContinue | Where-Object{$_.Index -gt $lastInerationIndex} | ForEach-Object{
+Get-EventLog -LogName Security -InstanceId 5157 -ErrorAction SilentlyContinue | Where-Object{$_.Index -gt $lastInerationIndex} | ForEach-Object{
     $_.Message
 }
 
