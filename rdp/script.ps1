@@ -16,6 +16,6 @@ $records = Get-EventLog -LogName Security -InstanceId 5157 -ErrorAction Silently
     }
 }
 
-$records = $records.Where{$_ -eq 3389}
+$records = $records.Where{$_.port -eq 3389}
 $records
 $settings.Save($settingsFileName)
