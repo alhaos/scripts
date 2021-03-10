@@ -10,12 +10,15 @@ $lastInerationIndex = $settings.Root.LastInerationIndex
 $settings.Root.LastInerationIndex = (Get-EventLog -LogName Security | Select-Object -First 1).Index.ToString()
 
 $records = Get-EventLog -LogName Security -InstanceId 5157 -ErrorAction SilentlyContinue | Where-Object { $_.Index -gt $lastInerationIndex } | ForEach-Object {
-    [PSCustomObject]@{
-        ip   = ([regex]"Адрес источника:\s*(.*)\s").Matches($_.Message).Groups[1].Value
-        port = ([regex]"Порт назначения:\s*(.*)\s").Matches($text).Groups[1].Value
+    $ip = ([regex]"Адрес источника:\s*(.*)\s").Matches($_.Message).Groups[1].Value
+    $port = ([regex]"Порт назначения:\s*(.*)\s").Matches($text).Groups[1].Value
+    if ($ip -and $port -eq 3389) {
+        [PSCustomObject]@{
+            ip   = $ip
+            port = $port
+        }
     }
 }
 
-$records = $records.Where{$_.port -eq 3389}
 $records
 $settings.Save($settingsFileName)
