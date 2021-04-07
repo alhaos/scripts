@@ -6,7 +6,7 @@
 * [order_with_results.template](https://github.com/alhaos/scripts/blob/master/tmp/order_with_results.template)
 
 
-Cкрипта [orders.ps1](https://github.com/alhaos/scripts/blob/master/tmp/orders.ps1) используя эти шаблоны, создает готовые документы, и помещает их в базу данных, проверяя уникальность. Пока обрабатываются только имя, фамилия, дата рождения и пол.
+Cкрипт [orders.ps1](https://github.com/alhaos/scripts/blob/master/tmp/orders.ps1) используя эти шаблоны, создает готовые документы, и помещает их в базу данных, проверяя уникальность. Пока обрабатываются только имя, фамилия, дата рождения и пол.
 
 ``` code
 MSH|^~\&|sender|sender system|lab name|Lab Client Code|YYYYMMDDhhmmss||ORM^O01|ctrl ID|P|2.5.1
