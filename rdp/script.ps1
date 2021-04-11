@@ -1,24 +1,37 @@
-param(
-    # settings file name
-    [Parameter(Mandatory = $false, Position = 0)]
-    [ValidateScript( { [System.IO.File]::Exists($_) -and ([System.IO.FileInfo]$_).Name -eq "settings.xml" })]
-    [System.IO.FileInfo]$settingsFileName = ".\settings.xml"
-)
+& {
+    param(
+        [Parameter(Mandatory)]
+        [String]
+        $logName,
 
-[xml]$settings = Get-Content $settingsFileName
-$lastInerationIndex = $settings.Root.LastInerationIndex
-$settings.Root.LastInerationIndex = (Get-EventLog -LogName Security | Select-Object -First 1).Index.ToString()
+        [Parameter(Mandatory)]
+        [System.IO.FileInfo]
+        $outFile
 
-$records = Get-EventLog -LogName Security -InstanceId 5157 -ErrorAction SilentlyContinue | Where-Object { $_.Index -gt $lastInerationIndex } | ForEach-Object {
-    $ip = ([regex]"Адрес источника:\s*(.*)\s").Matches($_.Message).Groups[1].Value
-    $port = ([regex]"Порт назначения:\s*(.*)\s").Matches($text).Groups[1].Value
-    if ($ip -and $port -eq 3389) {
-        [PSCustomObject]@{
-            ip   = $ip
-            port = $port
-        }
+    )
+
+    if (-not [System.Diagnostics.EventLog]::Exists($logName)) {
+        Write-Host -ForegroundColor red 'Error.'
     }
-}
 
-$records
-$settings.Save($settingsFileName)
+    Get-EventLog | ForEach-Object {
+        switch ($_.EntryType) {
+            'Information' {
+                [PSCustomObject]@{
+                    Color = [System.ConsoleColor]::Green
+                    Object = $_
+                }
+             }
+            'Error' {
+                [PSCustomObject]@{
+                    Color = [System.ConsoleColor]::Black
+                    Object = $_
+                }
+             }
+        }
+    } | ConvertTo-Xml | Out-File 
+} -logName 'Windows PowerShel' -outFile c:\tmp\out.xml
+
+
+
+
