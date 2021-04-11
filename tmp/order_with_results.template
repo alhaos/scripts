@@ -1,0 +1,18 @@
+MSH|^~\&|sender|sender system|lab name|Lab Client Code|YYYYMMDDhhmmss||ORM^O01|ctrl ID|P|2.5.1
+PID|1|sender patient ID|Lab patient ID||{1}^{0}||YYYYMMDD ({2:yyyyMMdd})|{3}|||street^street^city^state^zip||phone||||||ssn
+RXO|medication code^description
+RXO|medication code^description
+PV1|||||||NPI^{1}^{0}^title
+ORC|NW|sender order#|||||||collect date & time
+SPM|1|specimen ID^description^L||result||normal
+SPM|2|specimen ID^description^L||result||normal
+DG1|1|IC10|diagnosis code^description
+DG1|2|IC10|diagnosis code^description
+IN1|1||insurance ID|insurance company name|street^street^city^state^zip||||||||||||relation to patient|||||||||||||||||||policy
+IN1|2||insurance ID|insurance company name|street^street^city^state^zip||||||||||||relation to patient|||||||||||||||||||policy
+GT1|1||last name^first name||street^street^city^state^zip|phone|dob|sex||relation to patient|ssn
+OBR|1|sender order#||test code^test name|R||order date & time
+OBX|1|NM|lab test id^test description^L||result||normal range/cutoff|flag(H=high, L=Low, A=abnormal)|||status(F=final, P=pending)|||yyyymmddhhmmss (reported)
+OBX|2|NM|lab test id^test description^L||result||normal range/cutoff|flag|||status|||yyyymmddhhmmss (reported)|lab ID^^L
+OBR|2|sender order#||test code^test name|R||order date & time
+FTS|1|End of File

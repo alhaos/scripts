@@ -1,0 +1,10 @@
+MSH|^~\&|lab|lab name|receiver|Lab Client Code|YYYYMMDDhhmmss||ORU^R01|ctrl ID|P|2.3
+PID|1|sender patient ID|lab patient ID||{1}^{0}||YYYYMMDD ({2:yyyyMMdd})|{3}|||street^street^city^state^zip||phone||||||ssn
+PV1|1|C||R||NPI^Dr last name^first name^^^^degree|||||||||||||||||||||||||||||||||Client ID^street^street^city^state^zip
+ORC|RE|requisition#|lab accession#||CM||||yyyymmddhhmmss (collected)|||||
+OBR|1|requisition#|lab accession#|Test ID^Test Description|R||yyyymmddhhmmss (collected)|||||||yyyymmddhhmmss (received)|||||||lab ID^lab name^lab address^lab city^lab state^lab zip^lab director^|yyyymmddhhmmss (reported)|||status(F=final, P=pending)
+OBX|1|NM|lab test id^test description^L||result||normal range/cutoff|flag(H=high, L=Low, A=abnormal)|||status(F=final, P=pending)|||yyyymmddhhmmss (reported)
+OBX|2|NM|lab test id^test description^L||result||normal range/cutoff|flag|||status|||yyyymmddhhmmss (reported)
+OBR|2|requisition#|lab accession#|PDF^Results Report|||yyyymmddhhmmss (collected)|||||||yyyymmddhhmmss (received)|||||||||lab ID^lab name^lab address^lab city^lab state^lab zip^lab director^|yyyymmddhhmmss (reported)|||status(F=final, P=pending)
+OBX|1|ED|PDF^PDF BASE64|1|JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL1hPYmplY3QvU3VidHlwZS9JbWFnZS9X
+FTS|1|End of File
