@@ -3,7 +3,7 @@ param(
 )
 
 
-$conn  = [System.Data.SqlClient.SqlConnection]::new('Server=LABHEALTHSERV2;Database=LincolnDiagnosticsLIS;User Id=dbro;Password=TecHP@$$123;MultipleActiveResultSets=true;')
+$conn  = [System.Data.SqlClient.SqlConnection]::new('Server=LABHEALTHSERV2;Database=LincolnDiagnosticsLIS;User Id=dbro;Password=****;MultipleActiveResultSets=true;')
 
 $commGetAccession = [System.Data.SqlClient.SqlCommand]::new()
 $commGetAccession.Connection = $conn
