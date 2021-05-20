@@ -1,1 +1,0 @@
-start pwsh -noexit .\script.ps1
