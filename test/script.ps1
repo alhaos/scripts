@@ -1,0 +1,3 @@
+$MyInvocation
+
+$MyInvocation.MyCommand.Definition

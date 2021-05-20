@@ -1,1 +1,1 @@
-"{0:yyyyMMdd}" -f 
+$watcher = [System.IO.FileSystemWatcher]::new('D:\GITS\Homedraw\ASP', 'a*.txt')
